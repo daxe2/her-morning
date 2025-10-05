@@ -1,0 +1,135 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>For You — My Morning Diary</title>
+  <style>
+    :root {
+      --pink: #ffd6e0;
+      --peach: #ffe5b9;
+      --mint: #d1f7e4;
+      --lavender: #e3d5ff;
+      --text: #444;
+      --accent: #ff8fab;
+    }
+
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(120deg, var(--pink), var(--mint));
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      overflow: hidden;
+    }
+
+    .container {
+      width: 90%;
+      max-width: 420px;
+      background: rgba(255, 255, 255, 0.7);
+      backdrop-filter: blur(10px);
+      border-radius: 20px;
+      padding: 22px;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.1);
+      text-align: center;
+      animation: fadeIn 1.2s ease-in-out;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    h1 {
+      color: var(--accent);
+      font-size: 24px;
+      margin-bottom: 6px;
+    }
+
+    .date {
+      color: #666;
+      font-size: 14px;
+    }
+
+    img {
+      width: 100%;
+      border-radius: 16px;
+      margin-top: 16px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+
+    p {
+      color: var(--text);
+      line-height: 1.6;
+      font-size: 15px;
+      margin-top: 16px;
+    }
+
+    .hearts span {
+      position: absolute;
+      animation: float 10s linear infinite;
+      opacity: 0.6;
+    }
+
+    @keyframes float {
+      0% { transform: translateY(100vh) scale(0.5); opacity: 1; }
+      100% { transform: translateY(-10vh) scale(1); opacity: 0; }
+    }
+
+    .text-reveal {
+      opacity: 0;
+      transform: translateY(10px);
+      animation: revealText 2s ease forwards;
+      animation-delay: 1s;
+    }
+
+    @keyframes revealText {
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+<body>
+  <div class="hearts"></div>
+  <div class="container">
+    <h1>Good Morning, My Love ☀️</h1>
+    <div class="date" id="date"></div>
+    <img src="https://i.imgur.com/z8dKZFG.jpeg" alt="Us together">
+
+    <p class="text-reveal">Each dawn whispers your name, like sunlight painting warmth across my thoughts. The world feels softer, slower, when I think of you.</p>
+    <p class="text-reveal" style="animation-delay: 2s;">If love had a heartbeat, it would echo the rhythm of your laughter. You are my quiet morning and my favorite forever.</p>
+    <p class="text-reveal" style="animation-delay: 3s;"> You are the reason for my existence, Aiswarya. If it wasn’t for you, I don’t know where I’d be.💖</p>
+       <p class="text-reveal" style="animation-delay: 3.5s;">You painted my colourless sky with millions of colourful stars and showed me there’s so much more to life than anger and pain.</p>
+    <p class="text-reveal" style="animation-delay: 4s;">Thank you for being my calm, my chaos, and everything in between.</p>
+    <p class="text-reveal" style="animation-delay: 4.5s;">Thank you, my love. I will forever love you, take care of you, and protect you from everything, for as long as I live.</p>
+    <p class="text-reveal" style="animation-delay: 5s;">Stay with me forever, vave.</p>
+  </div>
+
+  <audio autoplay loop>
+    <source src="sad-sad-piano-music-311697.mp3" type="audio/mpeg">
+  </audio>
+
+  <script>
+    // date setup
+    const dateEl = document.getElementById('date');
+    const d = new Date();
+    const opt = { weekday:'long', month:'long', day:'numeric' };
+    dateEl.textContent = d.toLocaleDateString(undefined, opt);
+
+    // floating pastel hearts
+    const hearts = document.querySelector('.hearts');
+    function createHeart() {
+      const h = document.createElement('span');
+      h.textContent = Math.random() > 0.5 ? '💗' : '✨';
+      h.style.left = Math.random() * 100 + 'vw';
+      h.style.animationDuration = 5 + Math.random() * 5 + 's';
+      h.style.fontSize = 12 + Math.random() * 18 + 'px';
+      hearts.appendChild(h);
+      setTimeout(() => h.remove(), 10000);
+    }
+    setInterval(createHeart, 700);
+  </script>
+</body>
+</html>
